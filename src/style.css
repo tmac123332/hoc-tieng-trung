@@ -1,11 +1,13 @@
 :root { --green:#58cc02; --green-d:#46a302; --blue:#1cb0f6; --red:#ff4b4b; --yellow:#ffc800; --bg:#fffaf0; --ink:#3c3c3c }
 * { box-sizing: border-box; font-family: 'Nunito','Segoe UI','Microsoft YaHei',sans-serif }
-body { margin:0; background:var(--bg); color:var(--ink) }
-.screen { max-width:520px; margin:0 auto; min-height:100vh; display:flex; flex-direction:column; padding:16px }
+html, body { overflow-x:hidden }
+body { margin:0; background:var(--bg); color:var(--ink); -webkit-text-size-adjust:100% }
+.screen { max-width:520px; margin:0 auto; min-height:100vh; min-height:100dvh; display:flex; flex-direction:column; padding:16px; padding-top:max(16px, env(safe-area-inset-top)); padding-bottom:max(16px, env(safe-area-inset-bottom)) }
 .center { align-items:center; justify-content:center; text-align:center; gap:8px }
-h1 { margin:0; font-size:26px }
-header { display:flex; justify-content:space-between; align-items:center }
-.stats { display:flex; gap:12px; font-weight:800; font-size:18px }
+h1 { margin:0; font-size:clamp(20px, 6vw, 26px) }
+header { display:flex; justify-content:space-between; align-items:center; gap:8px }
+header h1 { flex:1; min-width:0; font-size:clamp(18px, 5.2vw, 24px) }
+.stats { display:flex; align-items:center; gap:8px; font-weight:800; font-size:16px; white-space:nowrap }
 .goal { background:#fff; border-radius:20px; padding:14px; margin:16px 0; font-weight:700; box-shadow:0 3px 0 #eee }
 .bar { height:16px; background:#e5e5e5; border-radius:99px; overflow:hidden; flex:1 }
 .bar > div { height:100%; background:var(--green); border-radius:99px; transition:width .3s }
@@ -21,10 +23,10 @@ header { display:flex; justify-content:space-between; align-items:center }
 .top { display:flex; align-items:center; gap:12px } .x { border:0; background:none; font-size:24px; cursor:pointer }
 .body { flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:12px; text-align:center }
 .prompt { font-size:20px; font-weight:800; margin:0 }
-.big { font-size:90px; line-height:1 } .big.speaker { cursor:pointer }
-.hanzi { font-size:72px; font-weight:800; cursor:pointer; line-height:1.1 } .pinyin { font-size:26px; color:var(--blue); font-weight:700 } .vi { font-size:22px }
+.big { font-size:clamp(60px, 22vw, 90px); line-height:1 } .big.speaker { cursor:pointer }
+.hanzi { font-size:clamp(44px, 17vw, 72px); overflow-wrap:anywhere; font-weight:800; cursor:pointer; line-height:1.1 } .pinyin { font-size:26px; color:var(--blue); font-weight:700 } .vi { font-size:22px }
 .options { display:grid; grid-template-columns:1fr 1fr; gap:12px; width:100% }
-.opt { border:2px solid #e5e5e5; border-bottom-width:5px; border-radius:18px; background:#fff; padding:16px 8px; font-size:22px; font-weight:800; cursor:pointer; display:flex; flex-direction:column; gap:2px; align-items:center }
+.opt { min-width:0; overflow-wrap:anywhere; border:2px solid #e5e5e5; border-bottom-width:5px; border-radius:18px; background:#fff; padding:14px 6px; font-size:clamp(16px, 5vw, 22px); font-weight:800; cursor:pointer; display:flex; flex-direction:column; gap:2px; align-items:center }
 .opt small { font-size:14px; color:#888; font-weight:600 }
 .opt.right { border-color:var(--green); background:#d7ffb8 } .opt.wrong { border-color:var(--red); background:#ffdfe0 }
 .btn { border:0; border-radius:16px; padding:14px 28px; font-size:18px; font-weight:800; cursor:pointer }
@@ -32,7 +34,7 @@ header { display:flex; justify-content:space-between; align-items:center }
 .btn.ghost { background:#fff; border:2px solid #e5e5e5; color:var(--blue) }
 .mic { width:96px; height:96px; border-radius:50%; border:0; background:var(--blue); font-size:44px; cursor:pointer; box-shadow:0 6px 0 #1899d6 } .mic.on { background:var(--red); animation:bounce .7s infinite }
 .link { background:none; border:0; color:#888; text-decoration:underline; cursor:pointer }
-.footer { margin:0 -16px -16px; padding:16px; min-height:96px } .footer.ok { background:#d7ffb8 } .footer.bad { background:#ffdfe0 }
+.footer { position:sticky; bottom:0; margin:0 -16px calc(-1 * max(16px, env(safe-area-inset-bottom))); padding:16px 16px max(16px, env(safe-area-inset-bottom)); min-height:96px; background:var(--bg) } .footer.ok { background:#d7ffb8 } .footer.bad { background:#ffdfe0 }
 .msg { font-weight:800; font-size:18px; margin-bottom:10px } .msg small { display:block; font-weight:600; color:#666 }
 .xp { font-size:28px; font-weight:800; color:var(--yellow) }
 .hv { font-size:18px; color:#b45309 } .hv b { font-size:20px }

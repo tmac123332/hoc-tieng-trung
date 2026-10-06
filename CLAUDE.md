@@ -21,7 +21,8 @@ PWA: `public/sw.js` (cache-first cho tệp tĩnh và âm thanh, network-first ch
 | `src/data.ts` | Gộp thành `LESSONS` (pinyin trước, HSK sau) và `ALL_WORDS` |
 | `src/exercises.ts` | Sinh bài tập: học từ, chọn nghĩa, chọn chữ Hán, nghe-chọn, đúng/sai, đọc to |
 | `src/Lesson.tsx` | Màn hình bài học, kết quả, tính XP/sao, lặp lại câu sai cuối bài |
-| `src/store.ts` | XP, streak, mục tiêu ngày, sao, hệ thống "box" ôn tập (Leitner, **tạm thời**) |
+| `src/store.ts` | XP, streak, mục tiêu ngày, sao, **FSRS** (`ts-fsrs`, không dùng bước học theo phút; mỗi từ 1 thẻ trong `cards`, điểm 1–4) |
+| `src/pinyinCheck.ts` | Chấm pinyin gõ vào: chấp nhận dấu thanh hoặc số (ni3 hao3), ü/v/u; sai thanh → báo riêng |
 | `src/speech.ts` | Phát mp3 dựng sẵn (khuếch đại ×3, `GAIN`), nhận diện giọng nói (Web Speech API), đo micro |
 | `src/MicTest.tsx` | Màn hình kiểm tra loa, micro, nhận diện (nút 🎤✔ ở trang chủ) |
 | `src/App.tsx` | Trang chủ: bản đồ bài (mở khóa tuần tự), nút "Ôn tập dành riêng cho bạn" |
@@ -48,16 +49,18 @@ PWA: `public/sw.js` (cache-first cho tệp tĩnh và âm thanh, network-first ch
 - Nhận diện giọng nói + màn hình kiểm tra micro; lỗi kỹ thuật không bị tính là đọc sai.
 - PWA (cài được, offline), đã đăng lên GitHub Pages, đã sửa bố cục cho điện thoại (360 px, đã kiểm tra bằng khung giả lập, **chưa thử máy thật**).
 
+- (2026-10-06) **Học thông minh đợt 1:** mỗi bài = học từ → lượt 1 nhận ra đáp án → lượt 2 **tự nhớ lại** (gõ pinyin / xem đáp án rồi tự chấm Quên-Khó-Nhớ-Dễ / nghe tự nhớ nghĩa / đọc to) có xen 3 từ cũ; trang chủ có nút "Hôm nay cần ôn N từ" theo FSRS (mỗi lần tối đa 10 từ, chỉ bài tự nhớ). Đã kiểm thử logic và luồng bằng jsdom, **chưa thử trên máy thật**.
+
 **Chưa làm / chưa kiểm chứng:**
 - Chưa thử cài PWA và micro trên điện thoại thật. iPhone/Safari: nhận diện giọng nói không ổn định → **luyện nói nên dùng Android + Chrome**.
 - Chưa có nhảy cóc / kiểm tra đầu vào (các bài đang khóa tuần tự).
-- Ôn tập vẫn là Leitner "box" tạm thời, chưa phải FSRS.
+- Tiến độ cũ (trường `words` kiểu box) bị bỏ qua; dữ liệu cũ trong trình duyệt không được chuyển sang FSRS (chưa có ai học nhiều nên chấp nhận).
 - Chưa có chế độ cho bé, hồ sơ nhiều người dùng, đồng bộ giữa thiết bị.
 
 ## Việc tiếp theo (theo thứ tự đã thống nhất)
 1. Chủ dự án học thử, góp ý (giọng đọc, gợi ý phát âm, thứ tự bài, lỗi giao diện).
 2. Chọn: **HSK2** (150 từ nữa) hay **ngữ pháp + hội thoại** cho HSK1.
-3. Thay hệ thống box bằng **FSRS** (thư viện `ts-fsrs`, MIT).
+3. ~~FSRS~~ (xong). Tiếp theo trong nhóm "học thông minh": **luyện cặp thanh điệu + shadowing** (mục 3 ở danh sách ý tưởng bên dưới).
 4. Nét chữ (Hanzi Writer), bài sắp xếp câu, ghép cặp, mascot/hiệu ứng.
 5. Lộ trình HSK3 → HSK4. Sau cùng: chế độ cho bé, đồng bộ thiết bị.
 6. Cân nhắc dùng bộ âm thanh người thật **Tone Perfect** (MSU) cho thanh điệu, khi xác minh được giấy phép.

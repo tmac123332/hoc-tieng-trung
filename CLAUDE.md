@@ -62,6 +62,17 @@ PWA: `public/sw.js` (cache-first cho tệp tĩnh và âm thanh, network-first ch
 5. Lộ trình HSK3 → HSK4. Sau cùng: chế độ cho bé, đồng bộ thiết bị.
 6. Cân nhắc dùng bộ âm thanh người thật **Tone Perfect** (MSU) cho thanh điệu, khi xác minh được giấy phép.
 
+## Ý tưởng "học thông minh" đã nghiên cứu (2026-10-06, nguồn Anh/Việt/Trung + YouTube)
+Chưa làm, xếp theo giá trị/công sức. Chủ dự án chưa chọn.
+1. **Truy hồi chủ động**: ẩn đáp án, buộc nhớ lại (bài gõ pinyin, nghe → tự nói nghĩa) thay vì chỉ chọn trắc nghiệm. Có bằng chứng mạnh nhất.
+2. **FSRS + ôn đúng lúc** (thay box tạm): màn hình "Hôm nay cần ôn N từ", ôn trước khi học bài mới.
+3. **Luyện cặp thanh điệu** (20 tổ hợp 2 âm) và **shadowing** (nghe câu rồi đọc theo ngay): chỗ người mới hay yếu nhất.
+4. **Học chữ Hán theo bộ thủ/thành phần** + câu chuyện gợi nhớ; ưu tiên nhận mặt chữ trước, viết sau (Hanzi Writer).
+5. **Hán Việt có đối chiếu đúng/sai** (lợi thế người Việt; cảnh báo: không phải lúc nào cũng đúng nghĩa, nhiều từ nghĩa lệch).
+6. **Xen kẽ (interleaving)** từ cũ vào bài mới; chia theo chủ đề; "dạy lại" (Feynman) = bài tự giải thích/đặt câu.
+7. **Đọc/nghe dễ hiểu theo cấp** (truyện ngắn HSK1 bằng câu đã học, i+1).
+8. Trò chơi hóa: ưu tiên tiến bộ nhìn thấy, thành tựu nhỏ; **tránh bảng xếp hạng/phạt nặng** (gây lo âu), đặc biệt cho bé.
+
 ## Quyết định và bài học quan trọng
 - **Dữ liệu mở HSK không dùng thẳng được:** `complete-hsk-vocabulary` (MIT) chỉ có nghĩa tiếng Anh, và dạng đầu tiên của nhiều chữ bị sai cách đọc/nghĩa (vd. 都 → "Dū họ Đỗ", 读 → "dòu", 听 → "yǐn"). Vì vậy **biên soạn tay** pinyin và nghĩa Việt, chỉ dùng bộ gốc để đối chiếu danh sách từ. Khi thêm HSK2+ phải làm cùng cách.
 - Nghĩa Việt, Hán Việt, câu ví dụ do Claude soạn, **chưa người bản ngữ duyệt**. Hán Việt chỉ là mẹo nhớ. Cần chủ dự án đối chiếu với nguồn thứ hai.
